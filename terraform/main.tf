@@ -1,7 +1,7 @@
 
         resource "aws_s3_bucket" "bucket" {
           bucket = "example-bucket-name"
-          acl    = "public-read"
+          acl    = "private"
 
           website {
             index_document = "index.html"
