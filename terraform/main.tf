@@ -1,21 +1,4 @@
 
-        terraform {
-          required_providers {
-            aws = {
-              source  = "hashicorp/aws"
-              version = "~> 4.0"
-            }
-          }
-
-          backend "local" {
-            path = "terraform.tfstate"
-          }
-        }
-
-        provider "aws" {
-          region = "us-east-1"
-        }
-
         resource "aws_s3_bucket" "bucket" {
           bucket = "example-bucket-name"
           acl    = "public-read"
@@ -27,9 +10,9 @@
         }
 
         resource "aws_s3_bucket_object" "index" {
-          bucket       = aws_s3_bucket.bucket.bucket
+          bucket       = "example-bucket-name"
           key          = "index.html"
-          source       = "index.html"
+          content      = "<html><body><h1>Hello, AI</h1></body></html>"
           acl          = "public-read"
           content_type = "text/html"
         }
