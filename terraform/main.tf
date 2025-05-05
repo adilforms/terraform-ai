@@ -1,26 +1,9 @@
+Error generating Terraform code: 
 
-        resource "aws_s3_bucket" "bucket" {
-          bucket = "example-bucket-name"
-          acl    = "private"
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
 
-          website {
-            index_document = "index.html"
-            error_document = "error.html"
-          }
-        }
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
 
-        resource "aws_s3_bucket_object" "index" {
-          bucket       = "example-bucket-name"
-          key          = "index.html"
-          content      = "
-            <html>
-              <body>
-                <h1>Hello, AI</h1>
-                <p>AI can now create a PR</p>
-              </body>
-            </html>
-            "
-          acl          = "public-read"
-          content_type = "text/html"
-        }
-        
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
