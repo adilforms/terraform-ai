@@ -1,7 +1,7 @@
 
         resource "aws_s3_bucket" "bucket" {
           bucket = "example-bucket-name"
-          acl    = "private"
+          acl = "private"
 
           website {
             index_document = "index.html"
@@ -24,3 +24,10 @@
           content_type = "text/html"
         }
         
+
+resource "aws_s3_bucket_policy" "my-terraform-s3-bucket-2025_policy" {
+  bucket = aws_s3_bucket.my-terraform-s3-bucket-2025.id
+  policy = <<POLICY
+{}
+POLICY
+}
