@@ -12,7 +12,7 @@ variable "bucket_name" {
 variable "acl" {
   description = "Canned ACL to apply to the S3 bucket"
   type        = string
-  default = "private"
+  default = "public"
 }
 
 variable "environment" {
