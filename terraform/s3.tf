@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "ai_my_bucket" {
   bucket = var.bucket_name
-  acl    = var.acl
+  acl = "public"
 
   tags = {
     Environment = var.environment
