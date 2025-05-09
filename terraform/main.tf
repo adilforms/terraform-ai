@@ -1,26 +1,11 @@
+resource "aws_security_group" "allow_ssh_private" {
+  name        = "allow_ssh_private"
+  description = "Allow SSH inbound traffic from private IP range"
 
-        resource "aws_s3_bucket" "bucket" {
-          bucket = "example-bucket-name"
-          acl    = "private"
-
-          website {
-            index_document = "index.html"
-            error_document = "error.html"
-          }
-        }
-
-        resource "aws_s3_bucket_object" "index" {
-          bucket       = "example-bucket-name"
-          key          = "index.html"
-          content      = "
-            <html>
-              <body>
-                <h1>Hello, AI</h1>
-                <p>AI can now create a PR</p>
-              </body>
-            </html>
-            "
-          acl          = "public-read"
-          content_type = "text/html"
-        }
-        
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["x.x.x.x/x"] // replace x.x.x.x/x with your private IP range
+  }
+}
